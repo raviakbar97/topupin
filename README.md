@@ -1,178 +1,23 @@
-<!-- PROJECT_DOCUMENTATION.md - Viewable as HTML with inline styles -->
-
-<style>
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 20px;
-}
-h1, h2, h3, h4 {
-  color: #2c3e50;
-  margin-top: 30px;
-}
-h1 {
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 10px;
-  text-align: center;
-}
-h2 {
-  border-bottom: 1px solid #eaecef;
-  padding-bottom: 8px;
-}
-code {
-  font-family: 'Consolas', 'Monaco', monospace;
-  background-color: #f6f8fa;
-  padding: 2px 5px;
-  border-radius: 3px;
-}
-pre {
-  background-color: #f6f8fa;
-  border-radius: 6px;
-  padding: 16px;
-  overflow: auto;
-}
-blockquote {
-  border-left: 4px solid #3498db;
-  padding-left: 20px;
-  margin-left: 0;
-  color: #555;
-}
-a {
-  color: #3498db;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 20px 0;
-}
-table, th, td {
-  border: 1px solid #ddd;
-}
-th, td {
-  padding: 12px;
-  text-align: left;
-}
-th {
-  background-color: #f2f2f2;
-}
-tr:hover {
-  background-color: #f5f5f5;
-}
-.highlight {
-  background-color: #ffffcc;
-  padding: 2px;
-}
-.tip {
-  background-color: #e8f4f8;
-  border-left: 4px solid #3498db;
-  padding: 12px;
-  margin: 20px 0;
-  border-radius: 4px;
-}
-.warning {
-  background-color: #fff8dc;
-  border-left: 4px solid #f1c40f;
-  padding: 12px;
-  margin: 20px 0;
-  border-radius: 4px;
-}
-.checklist {
-  list-style-type: none;
-  padding-left: 0;
-}
-.checklist li {
-  position: relative;
-  padding-left: 30px;
-  margin-bottom: 10px;
-}
-.checklist li:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 2px;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #3498db;
-  border-radius: 3px;
-}
-.checklist li.checked:before {
-  background-color: #3498db;
-  content: '✓';
-  color: white;
-  text-align: center;
-  line-height: 20px;
-}
-.code-container {
-  position: relative;
-}
-.copy-btn {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background-color: #f2f2f2;
-  border: none;
-  border-radius: 3px;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 12px;
-}
-.copy-btn:hover {
-  background-color: #e0e0e0;
-}
-@media (max-width: 768px) {
-  body {
-    padding: 15px;
-  }
-}
-#toc {
-  background-color: #f8f9fa;
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 30px;
-}
-#toc ul {
-  list-style-type: none;
-  padding-left: 20px;
-}
-</style>
-
 # Topupin Project Documentation
 
-<div id="toc">
-  <h2>Table of Contents</h2>
-  <ul>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#api-integration">API Integration</a>
-      <ul>
-        <li><a href="#ditusi-api">Ditusi API</a></li>
-        <li><a href="#authentication">Authentication</a></li>
-        <li><a href="#token-management">Token Management</a></li>
-        <li><a href="#data-synchronization">Data Synchronization</a></li>
-      </ul>
-    </li>
-    <li><a href="#api-testing">API Testing</a>
-      <ul>
-        <li><a href="#postman-setup">Postman Setup</a></li>
-        <li><a href="#authentication-endpoints">Authentication Endpoints</a></li>
-        <li><a href="#games-and-products">Games and Products</a></li>
-        <li><a href="#transactions">Transactions</a></li>
-        <li><a href="#balance">Balance</a></li>
-      </ul>
-    </li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#completed-work">Completed Work</a></li>
-    <li><a href="#issues-and-solutions">Issues and Solutions</a></li>
-    <li><a href="#next-steps">Next Steps</a></li>
-    <li><a href="#improvements">Potential Improvements</a></li>
-  </ul>
-</div>
+## Table of Contents
+- [Introduction](#introduction)
+- [API Integration](#api-integration)
+  - [Ditusi API](#ditusi-api)
+  - [Authentication](#authentication)
+  - [Token Management](#token-management)
+  - [Data Synchronization](#data-synchronization)
+- [API Testing](#api-testing)
+  - [Postman Setup](#postman-setup)
+  - [Authentication Endpoints](#authentication-endpoints)
+  - [Games and Products](#games-and-products)
+  - [Transactions](#transactions)
+  - [Balance](#balance)
+- [Features](#features)
+- [Completed Work](#completed-work)
+- [Issues and Solutions](#issues-and-solutions)
+- [Next Steps](#next-steps)
+- [Improvements](#improvements)
 
 ## Introduction
 
@@ -192,7 +37,7 @@ The Topupin application integrates with the Ditusi API to fetch game data, produ
 
 Ditusi API configuration is stored in `config/ditusi.php` and uses the following environment variables:
 
-```php
+```env
 DITUSI_BASE_URL=https://api.ditusi.co.id/api/v1
 DITUSI_DEV_BASE_URL=https://api.ditusi.co.id/api/dev/v1
 DITUSI_CLIENT_ID=421341515
@@ -208,8 +53,8 @@ The system implements a token-based authentication mechanism:
 2. Tokens are cached for configurable duration (default: 10 minutes)
 3. If a token expires, the system automatically refreshes it and retries the original request
 
-<div class="code-container">
-<pre><code class="language-php">// TokenManager refresh logic
+```php
+// TokenManager refresh logic
 public function refreshToken(): ?string
 {
     // Clear existing token from cache
@@ -218,9 +63,7 @@ public function refreshToken(): ?string
     // Get fresh token
     return $this->getToken(true);
 }
-</code></pre>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-</div>
+```
 
 ### Token Management
 
@@ -257,9 +100,7 @@ php artisan ditusi:import --all
 php artisan ditusi:import --all --debug
 ```
 
-<div class="tip">
-<strong>Note:</strong> According to the Ditusi API requirements, products can only be fetched per game (by providing a gameCode parameter) or by specifying a specific productCode. The import command handles this by fetching products for each game sequentially.
-</div>
+> **Note:** According to the Ditusi API requirements, products can only be fetched per game (by providing a gameCode parameter) or by specifying a specific productCode. The import command handles this by fetching products for each game sequentially.
 
 ## API Testing
 
@@ -285,9 +126,8 @@ To test the API using Postman:
 
 Register a new user account.
 
-<div class="code-container">
-<pre><code class="language-http">POST {{base_url}}/register
-
+```http
+POST {{base_url}}/register
 Content-Type: application/json
 
 {
@@ -296,9 +136,7 @@ Content-Type: application/json
   "password": "password123",
   "password_confirmation": "password123"
 }
-</code></pre>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-</div>
+```
 
 **Expected Response (201 Created):**
 ```json
@@ -318,34 +156,19 @@ Content-Type: application/json
 }
 ```
 
-**cURL Example:**
-```bash
-curl -X POST "http://localhost:8000/api/register" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Test User",
-    "email": "test@example.com",
-    "password": "password123",
-    "password_confirmation": "password123"
-  }'
-```
-
 #### Login
 
 Log in with existing credentials to obtain an authentication token.
 
-<div class="code-container">
-<pre><code class="language-http">POST {{base_url}}/login
-
+```http
+POST {{base_url}}/login
 Content-Type: application/json
 
 {
   "email": "test@example.com",
   "password": "password123"
 }
-</code></pre>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-</div>
+```
 
 **Expected Response (200 OK):**
 ```json
@@ -365,27 +188,14 @@ Content-Type: application/json
 }
 ```
 
-**cURL Example:**
-```bash
-curl -X POST "http://localhost:8000/api/login" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "test@example.com",
-    "password": "password123"
-  }'
-```
-
 #### Logout
 
 Log out the current user and invalidate the token.
 
-<div class="code-container">
-<pre><code class="language-http">POST {{base_url}}/logout
-
+```http
+POST {{base_url}}/logout
 Authorization: Bearer {{token}}
-</code></pre>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-</div>
+```
 
 **Expected Response (200 OK):**
 ```json
@@ -395,27 +205,16 @@ Authorization: Bearer {{token}}
 }
 ```
 
-**cURL Example:**
-```bash
-curl -X POST "http://localhost:8000/api/logout" \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE"
-```
-
 ### Games and Products
-
-The following endpoints provide access to games and products data.
 
 #### List Games
 
 Retrieve all active games.
 
-<div class="code-container">
-<pre><code class="language-http">GET {{base_url}}/games
-
+```http
+GET {{base_url}}/games
 Authorization: Bearer {{token}}
-</code></pre>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-</div>
+```
 
 **Expected Response (200 OK):**
 ```json
@@ -457,31 +256,20 @@ Authorization: Bearer {{token}}
           "created_at": "2025-04-24T18:30:25.000000Z",
           "updated_at": "2025-04-24T18:30:25.000000Z"
         }
-        // ... more products
       ]
     }
-    // ... more games
   ]
 }
-```
-
-**cURL Example:**
-```bash
-curl -X GET "http://localhost:8000/api/games" \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE"
 ```
 
 #### List Products
 
 Retrieve all active products or filter by game code.
 
-<div class="code-container">
-<pre><code class="language-http">GET {{base_url}}/products?game_code=ML
-
+```http
+GET {{base_url}}/products?game_code=ML
 Authorization: Bearer {{token}}
-</code></pre>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-</div>
+```
 
 **Expected Response (200 OK):**
 ```json
@@ -523,28 +311,18 @@ Authorization: Bearer {{token}}
         "updated_at": "2025-04-24T18:30:25.000000Z"
       }
     }
-    // ... more products
   ]
 }
 ```
 
-**cURL Example:**
-```bash
-curl -X GET "http://localhost:8000/api/products?game_code=ML" \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE"
-```
-
 ### Transactions
-
-The following endpoints allow creating and checking transactions.
 
 #### Create Transaction
 
 Create a new transaction for a product.
 
-<div class="code-container">
-<pre><code class="language-http">POST {{base_url}}/transactions
-
+```http
+POST {{base_url}}/transactions
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -556,9 +334,7 @@ Content-Type: application/json
     "server": "1234"
   }
 }
-</code></pre>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-</div>
+```
 
 **Expected Response (201 Created):**
 ```json
@@ -593,32 +369,14 @@ Content-Type: application/json
 }
 ```
 
-**cURL Example:**
-```bash
-curl -X POST "http://localhost:8000/api/transactions" \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "product_code": "ML-01",
-    "amount": 1,
-    "additional_information": {
-      "user_id": "123456789",
-      "server": "1234"
-    }
-  }'
-```
-
 #### Check Transaction Status
 
 Check the status of an existing transaction.
 
-<div class="code-container">
-<pre><code class="language-http">GET {{base_url}}/transactions/TOP-ABCDEF12345
-
+```http
+GET {{base_url}}/transactions/TOP-ABCDEF12345
 Authorization: Bearer {{token}}
-</code></pre>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-</div>
+```
 
 **Expected Response (200 OK):**
 ```json
@@ -646,23 +404,14 @@ Authorization: Bearer {{token}}
 }
 ```
 
-**cURL Example:**
-```bash
-curl -X GET "http://localhost:8000/api/transactions/TOP-ABCDEF12345" \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE"
-```
-
 ### Balance
 
 Check the current deposit balance.
 
-<div class="code-container">
-<pre><code class="language-http">GET {{base_url}}/balance
-
+```http
+GET {{base_url}}/balance
 Authorization: Bearer {{token}}
-</code></pre>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-</div>
+```
 
 **Expected Response (200 OK):**
 ```json
@@ -684,16 +433,6 @@ Authorization: Bearer {{token}}
   }
 }
 ```
-
-**cURL Example:**
-```bash
-curl -X GET "http://localhost:8000/api/balance" \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE"
-```
-
-<div class="tip">
-<strong>Tip:</strong> When testing the API, consider creating a Postman Collection to save all these requests. You can also set up a collection-level variable for the auth token that is automatically updated when you login.
-</div>
 
 ## Features
 
@@ -727,19 +466,17 @@ The Topupin application currently provides the following features:
 
 ## Completed Work
 
-<ul class="checklist">
-  <li class="checked">Initial Laravel project setup and configuration</li>
-  <li class="checked">Ditusi API integration architecture</li>
-  <li class="checked">Token-based authentication system</li>
-  <li class="checked">Token refresh mechanism</li>
-  <li class="checked">Game and product data models</li>
-  <li class="checked">Database migrations and relationships</li>
-  <li class="checked">Data synchronization commands</li>
-  <li class="checked">Scheduled automatic updates</li>
-  <li class="checked">Product price handling enhancements (increased decimal precision)</li>
-  <li class="checked">API endpoints for accessing game and product data</li>
-  <li class="checked">Removal of sample data seeders in favor of direct API imports</li>
-</ul>
+- [x] Initial Laravel project setup and configuration
+- [x] Ditusi API integration architecture
+- [x] Token-based authentication system
+- [x] Token refresh mechanism
+- [x] Game and product data models
+- [x] Database migrations and relationships
+- [x] Data synchronization commands
+- [x] Scheduled automatic updates
+- [x] Product price handling enhancements (increased decimal precision)
+- [x] API endpoints for accessing game and product data
+- [x] Removal of sample data seeders in favor of direct API imports
 
 ## Issues and Solutions
 
@@ -803,18 +540,16 @@ $table->decimal('price', 16, 2);
 
 The following tasks are planned for the next development phases:
 
-<ul class="checklist">
-  <li>User authentication and authorization system</li>
-  <li>Admin dashboard for monitoring and management</li>
-  <li>Transaction processing and payment integration</li>
-  <li>User interface for browsing games and products</li>
-  <li>Order history and transaction tracking</li>
-  <li>Implement caching for frequently accessed data</li>
-  <li>Add comprehensive logging and monitoring</li>
-  <li>Implement rate limiting for API requests</li>
-  <li>Create API documentation</li>
-  <li>Set up automated testing</li>
-</ul>
+- [ ] User authentication and authorization system
+- [ ] Admin dashboard for monitoring and management
+- [ ] Transaction processing and payment integration
+- [ ] User interface for browsing games and products
+- [ ] Order history and transaction tracking
+- [ ] Implement caching for frequently accessed data
+- [ ] Add comprehensive logging and monitoring
+- [ ] Implement rate limiting for API requests
+- [ ] Create API documentation
+- [ ] Set up automated testing
 
 ## Improvements
 
@@ -856,55 +591,4 @@ Strengthen application security with:
 - Regular security audits
 - Input validation and sanitization
 
-<div class="warning">
-<strong>Important:</strong> Always keep Ditusi API credentials secure and never expose them in client-side code or public repositories.
-</div>
-
-<script>
-// Function to generate table of contents
-document.addEventListener('DOMContentLoaded', function() {
-  // Already have static TOC
-});
-
-// Function to make checklist items interactive
-document.addEventListener('DOMContentLoaded', function() {
-  const checklistItems = document.querySelectorAll('.checklist li:not(.checked)');
-  checklistItems.forEach(item => {
-    item.addEventListener('click', function() {
-      this.classList.toggle('checked');
-    });
-  });
-});
-
-// Function to copy code snippets
-function copyCode(button) {
-  const codeBlock = button.previousElementSibling;
-  const code = codeBlock.textContent;
-  
-  navigator.clipboard.writeText(code).then(() => {
-    const originalText = button.textContent;
-    button.textContent = 'Copied!';
-    setTimeout(() => {
-      button.textContent = originalText;
-    }, 2000);
-  }).catch(err => {
-    console.error('Failed to copy text: ', err);
-  });
-}
-
-// Smooth scrolling for anchor links
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        window.scrollTo({
-          top: target.offsetTop,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-});
-</script> 
+> **Important:** Always keep Ditusi API credentials secure and never expose them in client-side code or public repositories. 
